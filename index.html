@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10142c" />
+    <meta name="description" content="A little room to play in four spatial dimensions." />
+    <title>Fourth Room — a 4D toybox</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#play" aria-label="Fourth Room home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="brand-copy"><strong>FOURTH ROOM</strong><small>DIMENSIONAL PLAY LAB</small></span>
+        </a>
+        <div class="topbar-meta"><span class="live-dot"></span><span>LIVE SIMULATION</span><span class="meta-divider"></span><span>EXPERIMENT 004</span></div>
+        <button class="icon-button sound-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3l4 3V7l-4 3H4Z"/><path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+        </button>
+      </header>
+
+      <nav class="rail" aria-label="Main navigation">
+        <a class="rail-link active" href="#play" aria-label="Playroom" title="Playroom"><svg viewBox="0 0 24 24"><path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5v-7Z"/><path d="m4.5 8.8 7.5 4.3 7.5-4.3M12 13.2V20"/></svg></a>
+        <a class="rail-link" href="#field-notes" aria-label="Field notes" title="Field notes"><svg viewBox="0 0 24 24"><path d="M6 4.5h12a1.5 1.5 0 0 1 1.5 1.5v14L12 16l-7.5 4V6A1.5 1.5 0 0 1 6 4.5Z"/><path d="M8.5 8h7M8.5 11h7"/></svg></a>
+        <div class="rail-spacer"></div>
+        <span class="rail-stamp">4D<br/>/01</span>
+      </nav>
+
+      <main id="play" class="main-content">
+        <section class="intro-row">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-mark"></span> AN OPEN-ENDED PLAYGROUND</div>
+            <h1>A little room<br class="mobile-break"/> in <em>four</em> dimensions.</h1>
+            <p class="intro-copy">The toys are real. Your view is just a slice.</p>
+          </div>
+          <div class="intro-note"><span class="note-index">FIELD NOTE 01</span><span>Move the section through <i>w</i>.<br/>See what comes through.</span></div>
+        </section>
+
+        <div class="workspace-grid">
+          <section class="play-card" aria-label="Interactive 4D toybox">
+            <div class="stage-heading">
+              <div class="stage-title"><span class="stage-icon">✳</span><div><strong>THE TOYBOX</strong><small id="stageCaption">TESSERACT · 4-CUBE</small></div></div>
+              <div class="stage-state"><span class="state-orbit"></span><span>SECTION VIEW</span><span class="state-divider">/</span><span id="sliceReadout">W&nbsp; 0.00</span></div>
+            </div>
+            <div class="canvas-wrap" id="canvasWrap">
+              <canvas id="world" aria-label="Interactive view of the selected four-dimensional toy"></canvas>
+              <div class="canvas-vignette" aria-hidden="true"></div>
+              <div class="world-label world-label-top"><span class="mini-line"></span><span id="worldObjectLabel">01 &nbsp; HYPERCUBE</span></div>
+              <div class="axis-label axis-x">x</div><div class="axis-label axis-y">y</div><div class="axis-label axis-z">z</div><div class="axis-label axis-w">w</div>
+              <div class="slice-tag"><span class="slice-tag-dot"></span><span>3D SLICE OF 4D SPACE</span></div>
+              <div class="canvas-tools">
+                <button class="canvas-tool" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button><span class="zoom-value" id="zoomReadout">100%</span><button class="canvas-tool" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+                <span class="tool-divider"></span><button class="canvas-tool fit-button" id="fitView" aria-label="Reset view" title="Reset view"><svg viewBox="0 0 24 24"><path d="M8 4H4v4M16 4h4v4M4 16v4h4M20 16v4h-4"/><path d="M4 8l5-5M20 8l-5-5M4 16l5 5M20 16l-5 5"/></svg></button>
+              </div>
+              <div class="slice-control">
+                <div class="slice-control-title"><span>SLICE POSITION</span><strong id="sliceValue">w = 0.00</strong></div>
+                <input id="sliceSlider" class="range range-slice" type="range" min="-2.2" max="2.2" step="0.01" value="0" aria-label="Slice position along the fourth dimension" />
+                <div class="range-scale"><span>−w</span><span>THE HYPERPLANE</span><span>+w</span></div>
+              </div>
+              <div class="gesture-hint" id="gestureHint"><span class="mouse-glyph"><i></i></span><span>DRAG A TOY TO THROW IT</span></div>
+            </div>
+            <div class="stage-footer">
+              <div class="footer-help"><span class="keyboard-key">SPACE</span><span>to pause</span><span class="help-divider"></span><span class="keyboard-key">DRAG</span><span>to toss</span></div>
+              <div class="stage-actions"><span class="toy-count"><i></i><b id="toyCount">01</b> IN THE BOX</span><button id="resetButton" class="text-button"><svg viewBox="0 0 24 24"><path d="M4 7v5h5M5.5 11a7 7 0 1 0 2.1-4.9L4 9"/></svg> RESET</button><button id="pauseButton" class="pause-button"><span class="pause-symbol" id="pauseSymbol">Ⅱ</span><span id="pauseText">PAUSE</span></button></div>
+            </div>
+          </section>
+
+          <aside class="inspector" aria-label="Toybox controls">
+            <div class="inspector-head"><div><span class="panel-kicker">YOUR PLAYROOM</span><h2>Pick a shape</h2></div><span class="inspector-count">01 — 04</span></div>
+            <div class="shape-list" role="group" aria-label="Choose a four-dimensional shape">
+              <button class="shape-card selected" data-shape="hypercube" aria-pressed="true">
+                <span class="shape-thumb thumb-cube"><svg viewBox="0 0 54 48"><path d="M9 15 25 7l19 9-17 9-18-10Z"/><path d="M9 15v19l18 9V25M27 25v18l17-9V16M16 12l17 9v18M38 14v20"/><path d="m9 15 18 10 17-9"/></svg></span>
+                <span class="shape-name"><b>Hypercube</b><small>8 cubical cells</small></span><span class="shape-pip"></span>
+              </button>
+              <button class="shape-card" data-shape="hypersphere" aria-pressed="false">
+                <span class="shape-thumb thumb-sphere"><svg viewBox="0 0 54 48"><circle cx="27" cy="24" r="17"/><ellipse cx="27" cy="24" rx="17" ry="7"/><path d="M27 7c-6 5-9 11-9 17s3 12 9 17c6-5 9-11 9-17S33 12 27 7Z"/><path d="M11 24h32"/></svg></span>
+                <span class="shape-name"><b>Hypersphere</b><small>One smooth surface</small></span><span class="shape-pip"></span>
+              </button>
+              <button class="shape-card" data-shape="simplex" aria-pressed="false">
+                <span class="shape-thumb thumb-simplex"><svg viewBox="0 0 54 48"><path d="m27 5 19 34H8L27 5Z"/><path d="m27 5 0 34m0-15L8 39m19-15 19 15M13 30h28"/><circle cx="27" cy="24" r="2"/></svg></span>
+                <span class="shape-name"><b>5-cell</b><small>4D simplex</small></span><span class="shape-pip"></span>
+              </button>
+              <button class="shape-card" data-shape="cross" aria-pressed="false">
+                <span class="shape-thumb thumb-cross"><svg viewBox="0 0 54 48"><path d="m27 5 9 19-9 19-9-19 9-19Z"/><path d="m27 5-17 8 8 11-8 11 17 8m0-38 17 8-8 11 8 11-17 8M10 13l17 11 17-11M10 35l17-11 17 11"/><circle cx="27" cy="24" r="2"/></svg></span>
+                <span class="shape-name"><b>16-cell</b><small>Cross-polytope</small></span><span class="shape-pip"></span>
+              </button>
+            </div>
+
+            <div class="panel-separator"></div>
+            <section class="control-group">
+              <div class="control-heading"><div><span class="panel-kicker">ROTATION</span><h3>Turn through space</h3></div><button class="tiny-reset" id="rotationReset" aria-label="Reset rotation" title="Reset rotation">↺</button></div>
+              <label class="slider-row"><span><i class="rotation-token token-xw">xw</i><span>Turn in xw</span></span><output id="xwOutput">18°</output></label>
+              <input id="xwSlider" class="range range-rotation" type="range" min="-180" max="180" step="1" value="18" aria-label="Rotate in xw plane" />
+              <label class="slider-row second-slider"><span><i class="rotation-token token-yw">yw</i><span>Turn in yw</span></span><output id="ywOutput">−12°</output></label>
+              <input id="ywSlider" class="range range-rotation" type="range" min="-180" max="180" step="1" value="-12" aria-label="Rotate in yw plane" />
+            </section>
+
+            <div class="panel-separator"></div>
+            <section class="control-group motion-group">
+              <div class="control-heading"><div><span class="panel-kicker">IN THE BOX</span><h3>Let it move</h3></div><span class="motion-live"><i></i> ACTIVE</span></div>
+              <div class="toggle-row"><span><span class="toggle-icon gravity-icon">↓</span><span><b>Gravity</b><small>Pull toward the floor</small></span></span><button class="switch is-on" id="gravityToggle" role="switch" aria-checked="true" aria-label="Gravity"><i></i></button></div>
+              <div class="toggle-row"><span><span class="toggle-icon spin-icon">⤾</span><span><b>Auto-rotate</b><small>Keep the toy turning</small></span></span><button class="switch is-on" id="spinToggle" role="switch" aria-checked="true" aria-label="Auto-rotate"><i></i></button></div>
+              <div class="inspector-actions"><button id="addToyButton" class="add-button"><span>＋</span> ADD A TOY</button><button id="clearButton" class="clear-button" aria-label="Clear toys" title="Clear all toys">CLEAR</button></div>
+            </section>
+            <div class="physics-note"><span class="note-asterisk">✳</span><span>These toys live in <b>4D space + time.</b><br/>The section is all we can see.</span></div>
+          </aside>
+        </div>
+        <section class="field-notes" id="field-notes"><span class="field-index">A NOTE ON THE FOURTH</span><span>In our room, objects can move along <i>w</i> just like they move left, right, up, or down. Slide the section and watch a whole new shape appear.</span><a href="https://4dtoys.com/" target="_blank" rel="noreferrer">EXPLORE THE IDEA <span>↗</span></a></section>
+        <footer class="page-footer"><span>FOURTH ROOM <i>·</i> A SPATIAL PLAY STUDY</span><span>MADE FOR CURIOUS DIMENSIONS</span></footer>
+      </main>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
