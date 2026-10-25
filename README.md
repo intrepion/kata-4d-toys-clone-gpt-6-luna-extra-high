@@ -1,5 +1,9 @@
 # Fourth Room
 
+## Play online
+
+[Play Fourth Room](https://intrepion.github.io/kata-4d-toys-clone-gpt-6-luna-extra-high/) — free, playable in your browser.
+
 Fourth Room is a small, browser-based 4D toybox: rotate a shape through the fourth spatial axis, move a three-dimensional slice through it, then drag and toss it around the room.
 
 It is an independent, original implementation inspired by the broad idea of playing with cross-sections of higher-dimensional objects. It does not use assets or code from *4D Toys* by mtb design works.
