@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "workflowCommit": "fb311261a910faf1742d9e10291ed017d17fb36d",
+  "sourceCommit": "8bf333a7cde26ed37e83eb581c7c1b43bbfea3da",
+  "runId": "41401159047",
+  "url": "http://127.0.0.1:4214/",
+  "inputs": {
+    "index.html": "629535a483bedc4cdf404beeb03b1b3d67be20827fdd7296db3b505f5d786f6b",
+    "styles.css": "8297cb16893da9839a9e2d71e5cf3bb0ec9ce80f8443ce017dd7adf37e01cb22",
+    "game.js": "2c3a79399fe54c7302d4dd85682df90081f22d2294f86c18a4e4960ff1564bb8",
+    "favicon.svg": "165b19f5e70601362f91ba7588d51b01245fabc101a5dcd88abe0f468e56967a"
+  },
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 1000
+  },
+  "externalFonts": "blocked; system fallback",
+  "screenshots": [
+    "fourth-room-01.png",
+    "fourth-room-02.png"
+  ]
+}
