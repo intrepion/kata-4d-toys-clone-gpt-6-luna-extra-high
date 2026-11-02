@@ -28,3 +28,7 @@ Then visit <http://localhost:8000>.
 - Use the arrow keys to move the slice; hold **Shift** for larger steps.
 
 The polytopes are built from four-dimensional vertices, edges, and facets, then intersected with the active `w = constant` hyperplane. The hypersphere uses its analytic section radius `sqrt(r² − w²)`. Motion uses a lightweight 4D position with floor and boundary bounces; it is a playful visualization, not a general purpose 4D rigid-body solver.
+
+## Arcade metadata
+
+See [docs/arcade-metadata.md](docs/arcade-metadata.md) for the game-owned manifest and screenshot provenance.
