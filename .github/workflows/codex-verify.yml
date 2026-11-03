@@ -17,7 +17,8 @@ jobs:
         with:
           node-version: '24'
       - run: npm install --prefix "$RUNNER_TEMP/arcade-ci" --no-save --package-lock=false --ignore-scripts playwright@1.64.1
-      - run: "$RUNNER_TEMP/arcade-ci/node_modules/.bin/playwright" install --with-deps chromium
+      - run: |
+          "$RUNNER_TEMP/arcade-ci/node_modules/.bin/playwright" install --with-deps chromium
       - name: Test game over loopback HTTP
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 &
